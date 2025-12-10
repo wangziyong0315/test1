@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彭思淇 - 个人信息</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         }
         
         body {
-            background-color: #0a192f;
+            background: linear-gradient(135deg, #0c2b4b 0%, #1a3a5f 50%, #0d1e35 100%);
             color: #e6f1ff;
             line-height: 1.6;
             min-height: 100vh;
@@ -22,6 +22,23 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 海洋背景效果 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(64, 156, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(64, 156, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(64, 156, 255, 0.08) 0%, transparent 30%);
+            z-index: -1;
         }
         
         .container {
@@ -34,13 +51,16 @@
         
         /* 头部样式 */
         header {
-            background: linear-gradient(135deg, #112240 0%, #0a192f 100%);
+            background: rgba(22, 45, 72, 0.8);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid #1e3a5c;
+            box-shadow: 
+                0 10px 30px rgba(0, 20, 40, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(64, 156, 255, 0.2);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         header::before {
@@ -50,7 +70,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            background: linear-gradient(90deg, #4cc9f0, #3a8bc8, #2a6ca7);
         }
         
         .profile-header {
@@ -64,25 +84,41 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #112240 0%, #1e3a5c 100%);
+            background: linear-gradient(135deg, rgba(34, 87, 126, 0.9) 0%, rgba(22, 45, 72, 0.9) 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 5px solid #4cc9f0;
-            box-shadow: 0 0 25px rgba(76, 201, 240, 0.3);
+            border: 5px solid rgba(76, 201, 240, 0.5);
+            box-shadow: 
+                0 0 25px rgba(76, 201, 240, 0.2),
+                inset 0 0 20px rgba(76, 201, 240, 0.1);
             overflow: hidden;
+            position: relative;
+        }
+        
+        .avatar-container::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, transparent, rgba(76, 201, 240, 0.1), transparent);
+            border-radius: 50%;
+            z-index: -1;
         }
         
         .avatar {
             width: 90%;
             height: 90%;
             border-radius: 50%;
-            background-color: #1e3a5c;
+            background-color: rgba(30, 58, 92, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #4cc9f0;
+            color: #7bcde8;
             font-size: 70px;
+            overflow: hidden;
         }
         
         .avatar img {
@@ -101,16 +137,17 @@
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            background: linear-gradient(90deg, #7bcde8, #4a9bcb, #2a6ca7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .id-class {
             font-size: 20px;
             margin-bottom: 25px;
-            color: #a8b2d1;
+            color: #b3c9e3;
         }
         
         .detail-item {
@@ -118,12 +155,15 @@
             align-items: center;
             margin-bottom: 15px;
             font-size: 18px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(64, 156, 255, 0.1);
         }
         
         .detail-item i {
             width: 30px;
-            color: #4cc9f0;
+            color: #7bcde8;
             font-size: 20px;
+            text-shadow: 0 0 5px rgba(76, 201, 240, 0.3);
         }
         
         /* 内容区域样式 */
@@ -134,15 +174,23 @@
         }
         
         .card {
-            background: linear-gradient(135deg, #112240 0%, #0a192f 100%);
+            background: rgba(22, 45, 72, 0.8);
             border-radius: 20px;
             padding: 35px;
             flex: 1;
             min-width: 300px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid #1e3a5c;
+            box-shadow: 
+                0 10px 30px rgba(0, 20, 40, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(64, 156, 255, 0.2);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
         
         .card::before {
@@ -152,20 +200,21 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            background: linear-gradient(90deg, #7bcde8, #4a9bcb, #2a6ca7);
         }
         
         .card-title {
             font-size: 26px;
             margin-bottom: 25px;
-            color: #64ffda;
+            color: #9bd8f0;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
         .card-title i {
-            color: #4cc9f0;
+            color: #7bcde8;
+            text-shadow: 0 0 5px rgba(76, 201, 240, 0.3);
         }
         
         .book-info {
@@ -178,14 +227,21 @@
         .book-cover {
             width: 150px;
             height: 200px;
-            background: linear-gradient(135deg, #1e3a5c 0%, #112240 100%);
+            background: linear-gradient(135deg, rgba(34, 87, 126, 0.9) 0%, rgba(22, 45, 72, 0.9) 100%);
             border-radius: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid #4cc9f0;
+            border: 1px solid rgba(76, 201, 240, 0.3);
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 
+                0 8px 20px rgba(0, 20, 40, 0.4),
+                inset 0 0 15px rgba(76, 201, 240, 0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .book-cover:hover {
+            transform: perspective(1000px) rotateY(10deg) scale(1.05);
         }
         
         .book-cover img {
@@ -206,49 +262,70 @@
         }
         
         .book-author {
-            color: #a8b2d1;
+            color: #b3c9e3;
             margin-bottom: 20px;
             font-size: 18px;
             font-style: italic;
         }
         
         .book-description {
-            color: #ccd6f6;
+            color: #d1ddf5;
             line-height: 1.7;
+            text-align: justify;
         }
         
         /* 技能部分样式 */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
         
         .skill-item {
-            background-color: #1e3a5c;
+            background: rgba(34, 87, 126, 0.5);
             padding: 12px 25px;
             border-radius: 50px;
-            color: #a8b2d1;
+            color: #b3c9e3;
             font-size: 16px;
-            border: 1px solid #2d4a76;
+            border: 1px solid rgba(76, 201, 240, 0.2);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(76, 201, 240, 0.2), transparent);
+            transition: left 0.5s ease;
         }
         
         .skill-item:hover {
-            background-color: #4cc9f0;
-            color: #0a192f;
+            background: rgba(76, 201, 240, 0.2);
+            color: #e6f1ff;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.4);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.2);
+        }
+        
+        .skill-item:hover::before {
+            left: 100%;
         }
         
         /* 底部样式 */
         footer {
             text-align: center;
             padding: 25px;
-            color: #a8b2d1;
+            color: #b3c9e3;
             font-size: 16px;
-            border-top: 1px solid #1e3a5c;
+            border-top: 1px solid rgba(64, 156, 255, 0.2);
             margin-top: 20px;
+            background: rgba(22, 45, 72, 0.5);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
         }
         
         .social-icons {
@@ -259,14 +336,24 @@
         }
         
         .social-icons a {
-            color: #a8b2d1;
+            color: #b3c9e3;
             font-size: 24px;
             transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(34, 87, 126, 0.5);
+            border: 1px solid rgba(76, 201, 240, 0.2);
         }
         
         .social-icons a:hover {
-            color: #4cc9f0;
-            transform: translateY(-5px);
+            color: #7bcde8;
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(76, 201, 240, 0.1);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.2);
         }
         
         /* 响应式设计 */
@@ -293,6 +380,12 @@
             .card {
                 min-width: 100%;
             }
+            
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
         }
         
         /* 动画效果 */
@@ -304,6 +397,15 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
             }
         }
         
@@ -321,6 +423,10 @@
             opacity: 0;
         }
         
+        .float {
+            animation: float 5s ease-in-out infinite;
+        }
+        
         /* 自定义头像上传区域样式 */
         .avatar-upload {
             margin-top: 15px;
@@ -328,31 +434,80 @@
         }
         
         .avatar-upload-btn {
-            background-color: #1e3a5c;
-            color: #4cc9f0;
-            border: 1px solid #4cc9f0;
-            padding: 8px 15px;
-            border-radius: 5px;
+            background: rgba(34, 87, 126, 0.7);
+            color: #7bcde8;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
             cursor: pointer;
             font-size: 14px;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .avatar-upload-btn:hover {
-            background-color: #4cc9f0;
-            color: #0a192f;
+            background: rgba(76, 201, 240, 0.2);
+            color: #e6f1ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.2);
         }
         
         #avatar-input {
             display: none;
         }
+        
+        /* 海洋波纹效果 */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230a2b4d" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: 1000px 100px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .wave.wave1 {
+            animation: wave-animate 30s linear infinite;
+            opacity: 0.3;
+        }
+        
+        .wave.wave2 {
+            animation: wave-animate 15s linear infinite;
+            opacity: 0.2;
+            bottom: 10px;
+        }
+        
+        .wave.wave3 {
+            animation: wave-animate 10s linear infinite;
+            opacity: 0.1;
+            bottom: 20px;
+        }
+        
+        @keyframes wave-animate {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: 1000px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- 海洋波纹效果 -->
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    
     <div class="container">
         <header class="fade-in">
             <div class="profile-header">
-                <div class="avatar-container">
+                <div class="avatar-container float">
                     <div class="avatar" id="avatar-display">
                         <i class="fas fa-user-circle"></i>
                     </div>
@@ -372,12 +527,12 @@
                     
                     <div class="detail-item">
                         <i class="fas fa-heart"></i>
-                        <span>喜欢的书：<em>岛上书店</em></span>
+                        <span>喜欢的书：<em>《岛上书店》</em></span>
                     </div>
                     
                     <div class="detail-item">
                         <i class="fas fa-quote-left"></i>
-                        <span>座右铭：多读书，多看报，少吃零食多睡觉</span>
+                        <span>座右铭：多读书，多看报，少吃零食多睡觉。</span>
                     </div>
                     
                     <div class="avatar-upload">
@@ -402,11 +557,11 @@
                     </div>
                     
                     <div class="book-details">
-                        <h3 class="book-title">岛上书店</h3>
+                        <h3 class="book-title">《岛上书店》</h3>
                         <p class="book-author">作者：[美] 加布瑞埃拉·泽文</p>
                         <p class="book-description">
-                            《岛上书店》是一本关于生命、救赎以及第二次机会的小说。有趣、温柔、动人，恰如其分，又汹涌澎湃。《岛上书店》提醒了我们，为什么阅读，为什么去爱。
-                            该书讲述了一段《帖木儿》珍本引发的奇妙缘分，将几个生命紧紧相连，展示了爱如何改变人生。这本书让我明白，没有人是一座孤岛，每本书都是一个世界。
+                            《岛上书店》是一本关于生命、救赎以及第二次机会的小说。有趣、温柔、动人，恰如其分，又汹涌澎湃。这本书提醒了我们，为什么阅读，为什么去爱。
+                            该书讲述了一段《帖木儿》珍本引发的奇妙缘分，将几个生命紧紧相连，展示了爱如何改变人生。这本书让我明白，没有人是一座孤岛，每本书都是一个世界。在数据的世界里，这本书提醒我人文关怀的重要性。
                         </p>
                     </div>
                 </div>
@@ -427,8 +582,10 @@
                 <h2 class="card-title" style="margin-top: 30px;">
                     <i class="fas fa-bullseye"></i> 学习目标
                 </h2>
-                <p style="color: #ccd6f6; line-height: 1.7;">
-                    作为一名数据科学与大数据技术专业的学生，我希望能深入学习大数据处理技术，掌握机器学习算法，并培养数据驱动的思维方式。未来希望能在数据分析领域发展，用数据解决实际问题，创造价值。
+                <p style="color: #d1ddf5; line-height: 1.7; text-align: justify;">
+                    作为一名数据科学与大数据技术专业的学生，我希望能深入学习大数据处理技术，掌握机器学习算法，并培养数据驱动的思维方式。
+                    就像大海深邃而广阔，数据世界也蕴含着无限的可能。我希望在数据分析领域深入探索，用数据解决实际问题，创造价值，
+                    同时保持对人文的关怀，让技术更有温度。
                 </p>
             </div>
         </div>
@@ -436,10 +593,10 @@
         <footer>
             <p>© 2023 彭思淇的个人信息页面 | 数据科学与大数据技术专业</p>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-weixin"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="微信"><i class="fab fa-weixin"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="邮箱"><i class="fas fa-envelope"></i></a>
             </div>
         </footer>
     </div>
@@ -461,6 +618,11 @@
                     const img = document.createElement('img');
                     img.src = e.target.result;
                     avatarDisplay.appendChild(img);
+                    
+                    // 添加图片加载成功后的效果
+                    img.onload = function() {
+                        avatarDisplay.parentElement.classList.add('float');
+                    };
                 }
                 
                 reader.readAsDataURL(file);
@@ -492,33 +654,74 @@
             const skillItems = document.querySelectorAll('.skill-item');
             const colors = [
                 'rgba(76, 201, 240, 0.2)',
-                'rgba(67, 97, 238, 0.2)',
-                'rgba(100, 255, 218, 0.2)'
+                'rgba(58, 139, 200, 0.2)',
+                'rgba(42, 108, 167, 0.2)',
+                'rgba(34, 87, 126, 0.2)'
             ];
             
             skillItems.forEach(item => {
                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                item.style.backgroundColor = randomColor;
+                item.style.background = randomColor;
             });
             
-            // 添加书封面悬停效果
-            const bookCover = document.querySelector('.book-cover');
-            bookCover.addEventListener('mouseenter', function() {
-                this.style.transform = 'rotateY(10deg)';
-                this.style.transition = 'transform 0.5s ease';
-            });
+            // 添加波浪效果
+            createWaveElements();
             
-            bookCover.addEventListener('mouseleave', function() {
-                this.style.transform = 'rotateY(0deg)';
+            // 为卡片添加悬停深度效果
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = 
+                        '0 15px 35px rgba(0, 20, 40, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = 
+                        '0 10px 30px rgba(0, 20, 40, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
+                });
             });
         });
+        
+        // 创建波浪效果元素
+        function createWaveElements() {
+            const wavesContainer = document.querySelector('.waves-container');
+            if (!wavesContainer) {
+                const container = document.createElement('div');
+                container.className = 'waves-container';
+                document.body.appendChild(container);
+            }
+        }
         
         // 添加社交图标点击效果
         document.querySelectorAll('.social-icons a').forEach(icon => {
             icon.addEventListener('click', function(e) {
                 e.preventDefault();
                 const platform = this.querySelector('i').className.split(' ')[1];
-                alert(`您点击了${getPlatformName(platform)}图标，这里可以链接到我的${getPlatformName(platform)}主页`);
+                const platformName = getPlatformName(platform);
+                
+                // 创建浮出提示
+                const tooltip = document.createElement('div');
+                tooltip.textContent = `即将跳转到${platformName}`;
+                tooltip.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(22, 45, 72, 0.9);
+                    color: #7bcde8;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    border: 1px solid rgba(76, 201, 240, 0.3);
+                    z-index: 1000;
+                    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                    backdrop-filter: blur(10px);
+                `;
+                
+                document.body.appendChild(tooltip);
+                
+                setTimeout(() => {
+                    tooltip.remove();
+                }, 1500);
             });
         });
         
@@ -531,6 +734,25 @@
                 default: return '社交平台';
             }
         }
+        
+        // 添加鼠标移动效果
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // 轻微的背景移动效果
+            document.body.style.backgroundPosition = `${x * 20}px ${y * 20}px`;
+            
+            // 为卡片添加轻微的视差效果
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const speed = 0.5;
+                const xMove = (x - 0.5) * speed;
+                const yMove = (y - 0.5) * speed;
+                
+                card.style.transform = `translate(${xMove}px, ${yMove}px)`;
+            });
+        });
     </script>
 </body>
 </html>
