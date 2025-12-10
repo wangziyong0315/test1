@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彭思淇 - 个人信息</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <header class="fade-in">
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <div class="avatar" id="avatar-display">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+                
+                <div class="personal-info">
+                    <h1 class="name">彭思淇</h1>
+                    <div class="id-class">
+                        <p>学号：23170401015</p>
+                        <p>班级：23级数据科学与大数据技术1班</p>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>专业：数据科学与大数据技术</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-heart"></i>
+                        <span>喜欢的书：<em>岛上书店</em></span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-quote-left"></i>
+                        <span>座右铭：多读书，多看报，少吃零食多睡觉</span>
+                    </div>
+                    
+                    <div class="avatar-upload">
+                        <button class="avatar-upload-btn" id="upload-btn">
+                            <i class="fas fa-camera"></i> 上传个人头像
+                        </button>
+                        <input type="file" id="avatar-input" accept="image/*">
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content-section">
+            <div class="card fade-in delay-1">
+                <h2 class="card-title">
+                    <i class="fas fa-book-open"></i> 最喜欢的书
+                </h2>
+                
+                <div class="book-info">
+                    <div class="book-cover">
+                        <img src="https://images.unsplash.com/photo-1544716278-e513176f20b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="岛上书店">
+                    </div>
+                    
+                    <div class="book-details">
+                        <h3 class="book-title">岛上书店</h3>
+                        <p class="book-author">作者：[美] 加布瑞埃拉·泽文</p>
+                        <p class="book-description">
+                            《岛上书店》是一本关于生命、救赎以及第二次机会的小说。有趣、温柔、动人，恰如其分，又汹涌澎湃。《岛上书店》提醒了我们，为什么阅读，为什么去爱。
+                            该书讲述了一段《帖木儿》珍本引发的奇妙缘分，将几个生命紧紧相连，展示了爱如何改变人生。这本书让我明白，没有人是一座孤岛，每本书都是一个世界。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card fade-in delay-2">
+                <h2 class="card-title">
+                    <i class="fas fa-laptop-code"></i> 专业技能
+                </h2>
+                
+                <div class="skills-container">
+                    <div class="skill-item">Python 编程</div>
+                    <div class="skill-item">数据分析</div>
+                    <div class="skill-item">机器学习</div>
+                    <div class="skill-item">SQL 数据库</div>
+                    <div class="skill-item">Hadoop/Spark</div>
+                    <div class="skill-item">数据可视化</div>
+                    <div class="skill-item">统计学</div>
+                    <div class="skill-item">Web 开发</div>
+                </div>
+                
+                <h2 class="card-title" style="margin-top: 30px;">
+                    <i class="fas fa-bullseye"></i> 学习目标
+                </h2>
+                <p style="color: #ccd6f6; line-height: 1.7;">
+                    作为一名数据科学与大数据技术专业的学生，我希望能深入学习大数据处理技术，掌握机器学习算法，并培养数据驱动的思维方式。未来希望能在数据分析领域发展，用数据解决实际问题，创造价值。
+                </p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 彭思淇的个人信息页面 | 数据科学与大数据技术专业</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 实现头像上传功能
+        document.getElementById('upload-btn').addEventListener('click', function() {
+            document.getElementById('avatar-input').click();
+        });
+        
+        document.getElementById('avatar-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const avatarDisplay = document.getElementById('avatar-display');
+                    avatarDisplay.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    avatarDisplay.appendChild(img);
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // 添加滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有带有fade-in类的元素添加动画
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            // 创建Intersection Observer来检测元素是否进入视口
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // 为技能标签添加随机颜色效果
+            const skillItems = document.querySelectorAll('.skill-item');
+            const colors = [
+                'rgba(76, 201, 240, 0.2)',
+                'rgba(67, 97, 238, 0.2)',
+                'rgba(100, 255, 218, 0.2)'
+            ];
+            
+            skillItems.forEach(item => {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                item.style.backgroundColor = randomColor;
+            });
+            
+            // 添加书封面悬停效果
+            const bookCover = document.querySelector('.book-cover');
+            bookCover.addEventListener('mouseenter', function() {
+                this.style.transform = 'rotateY(10deg)';
+                this.style.transition = 'transform 0.5s ease';
+            });
+            
+            bookCover.addEventListener('mouseleave', function() {
+                this.style.transform = 'rotateY(0deg)';
+            });
+        });
+        
+        // 添加社交图标点击效果
+        document.querySelectorAll('.social-icons a').forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.querySelector('i').className.split(' ')[1];
+                alert(`您点击了${getPlatformName(platform)}图标，这里可以链接到我的${getPlatformName(platform)}主页`);
+            });
+        });
+        
+        function getPlatformName(className) {
+            switch(className) {
+                case 'fa-github': return 'GitHub';
+                case 'fa-weixin': return '微信';
+                case 'fa-linkedin': return 'LinkedIn';
+                case 'fa-envelope': return '邮箱';
+                default: return '社交平台';
+            }
+        }
+    </script>
+</body>
+</html>
