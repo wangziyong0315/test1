@@ -5,6 +5,348 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彭思淇 - 个人信息</title>
     <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #0a192f;
+            color: #e6f1ff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #112240 0%, #0a192f 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #1e3a5c;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .avatar-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #112240 0%, #1e3a5c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid #4cc9f0;
+            box-shadow: 0 0 25px rgba(76, 201, 240, 0.3);
+            overflow: hidden;
+        }
+        
+        .avatar {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background-color: #1e3a5c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4cc9f0;
+            font-size: 70px;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .personal-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .id-class {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #a8b2d1;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .detail-item i {
+            width: 30px;
+            color: #4cc9f0;
+            font-size: 20px;
+        }
+        
+        /* 内容区域样式 */
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #112240 0%, #0a192f 100%);
+            border-radius: 20px;
+            padding: 35px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #1e3a5c;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+        }
+        
+        .card-title {
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: #64ffda;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-title i {
+            color: #4cc9f0;
+        }
+        
+        .book-info {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(135deg, #1e3a5c 0%, #112240 100%);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #4cc9f0;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .book-details {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .book-title {
+            font-size: 24px;
+            color: #e6f1ff;
+            margin-bottom: 15px;
+        }
+        
+        .book-author {
+            color: #a8b2d1;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-style: italic;
+        }
+        
+        .book-description {
+            color: #ccd6f6;
+            line-height: 1.7;
+        }
+        
+        /* 技能部分样式 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background-color: #1e3a5c;
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: #a8b2d1;
+            font-size: 16px;
+            border: 1px solid #2d4a76;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            background-color: #4cc9f0;
+            color: #0a192f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.4);
+        }
+        
+        /* 底部样式 */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #a8b2d1;
+            font-size: 16px;
+            border-top: 1px solid #1e3a5c;
+            margin-top: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: #a8b2d1;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #4cc9f0;
+            transform: translateY(-5px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .detail-item {
+                justify-content: center;
+            }
+            
+            .name {
+                font-size: 36px;
+            }
+            
+            .book-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .card {
+                min-width: 100%;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+        
+        /* 自定义头像上传区域样式 */
+        .avatar-upload {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .avatar-upload-btn {
+            background-color: #1e3a5c;
+            color: #4cc9f0;
+            border: 1px solid #4cc9f0;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .avatar-upload-btn:hover {
+            background-color: #4cc9f0;
+            color: #0a192f;
+        }
+        
+        #avatar-input {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -78,11 +420,7 @@
                 <div class="skills-container">
                     <div class="skill-item">Python 编程</div>
                     <div class="skill-item">数据分析</div>
-                    <div class="skill-item">机器学习</div>
                     <div class="skill-item">SQL 数据库</div>
-                    <div class="skill-item">Hadoop/Spark</div>
-                    <div class="skill-item">数据可视化</div>
-                    <div class="skill-item">统计学</div>
                     <div class="skill-item">Web 开发</div>
                 </div>
                 
